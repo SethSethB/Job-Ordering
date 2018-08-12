@@ -67,4 +67,11 @@ describe("orderJobs", () => {
     expect(cIndex).to.be.lessThan(dIndex);
     expect(bIndex).to.be.lessThan(eIndex);
   });
+
+  it("Throws an error if input includes any jobs which depend on themselves", () => {
+    const input = '{"a" : "", "b" : "", "c" : "c"}';
+    const errMsg = "Invalid input - Jobs cannot depend on themselves";
+    const boundOrderJobsFunction = orderJobs.bind(null, input);
+    expect(boundOrderJobsFunction).to.throw(Error, errMsg);
+  });
 });

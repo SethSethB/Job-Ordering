@@ -74,4 +74,12 @@ describe("orderJobs", () => {
     const boundOrderJobsFunction = orderJobs.bind(null, input);
     expect(boundOrderJobsFunction).to.throw(Error, errMsg);
   });
+
+  it("Throws an error if input includes any circular dependencies", () => {
+    const input =
+      '{"a" : "", "b" : "c", "c" : "f", "d" : "a", "e" : "", "f" : "b"}';
+    const errMsg = "Invalid input - Circular dependencies";
+    const boundOrderJobsFunction = orderJobs.bind(null, input);
+    expect(boundOrderJobsFunction).to.throw(Error, errMsg);
+  });
 });

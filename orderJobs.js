@@ -7,6 +7,9 @@ exports.orderJobs = jobData => {
   for (let childJob in jobs) {
     const parentJob = jobs[childJob];
 
+    if (childJob === parentJob)
+      throw new Error("Invalid input - Jobs cannot depend on themselves");
+
     const parentResultIndex = result.indexOf(parentJob);
     const childResultIndex = result.indexOf(childJob);
 

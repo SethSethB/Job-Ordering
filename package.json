@@ -1,0 +1,24 @@
+{
+  "name": "Job-Ordering",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha spec*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SethSethB/Job-Ordering.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SethSethB/Job-Ordering/issues"
+  },
+  "homepage": "https://github.com/SethSethB/Job-Ordering#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}

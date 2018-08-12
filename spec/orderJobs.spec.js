@@ -35,4 +35,36 @@ describe("orderJobs", () => {
     cIndex = result.indexOf("c");
     expect(aIndex).to.be.lessThan(cIndex);
   });
+
+  it("For a valid input with multiple dependencies returns an array containing all job values and honours all dependencies", () => {
+    let input =
+      '{"a" : "", "b" : "c", "c" : "f", "d" : "a", "e" : "b", "f" : ""}';
+    let result = orderJobs(input);
+    expect(result).to.have.members(["a", "b", "c", "d", "e", "f"]);
+    let aIndex = result.indexOf("a");
+    let bIndex = result.indexOf("b");
+    let cIndex = result.indexOf("c");
+    let dIndex = result.indexOf("d");
+    let eIndex = result.indexOf("e");
+    let fIndex = result.indexOf("f");
+    expect(cIndex).to.be.lessThan(bIndex);
+    expect(fIndex).to.be.lessThan(cIndex);
+    expect(aIndex).to.be.lessThan(dIndex);
+    expect(bIndex).to.be.lessThan(eIndex);
+
+    input = '{"a" : "b", "b" : "c", "c" : "f", "d" : "c", "e" : "b", "f" : ""}';
+    result = orderJobs(input);
+    expect(result).to.have.members(["a", "b", "c", "d", "e", "f"]);
+    aIndex = result.indexOf("a");
+    bIndex = result.indexOf("b");
+    cIndex = result.indexOf("c");
+    dIndex = result.indexOf("d");
+    eIndex = result.indexOf("e");
+    fIndex = result.indexOf("f");
+    expect(bIndex).to.be.lessThan(aIndex);
+    expect(cIndex).to.be.lessThan(bIndex);
+    expect(fIndex).to.be.lessThan(cIndex);
+    expect(cIndex).to.be.lessThan(dIndex);
+    expect(bIndex).to.be.lessThan(eIndex);
+  });
 });

@@ -82,4 +82,17 @@ describe("orderJobs", () => {
     const boundOrderJobsFunction = orderJobs.bind(null, input);
     expect(boundOrderJobsFunction).to.throw(Error, errMsg);
   });
+
+  it("Returns correct result for an input with key value pairs in a mixed-up order", () => {
+    input = '{"a" : "b", "d" : "", "b" : "c",  "c" : "d"}';
+    result = orderJobs(input);
+    expect(result).to.have.members(["a", "b", "c", "d"]);
+    aIndex = result.indexOf("a");
+    bIndex = result.indexOf("b");
+    cIndex = result.indexOf("c");
+    dIndex = result.indexOf("d");
+    expect(bIndex).to.be.lessThan(aIndex);
+    expect(cIndex).to.be.lessThan(bIndex);
+    expect(dIndex).to.be.lessThan(cIndex);
+  });
 });

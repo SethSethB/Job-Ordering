@@ -13,4 +13,11 @@ describe("orderJobs", () => {
     const result = orderJobs(input);
     expect(result).to.eql(["a"]);
   });
+
+  it("An input of jobs with no dependencies will return an array containing all job values in any order", () => {
+    const input = '{"a" : "", "b" : "", "c" : ""}';
+    const result = orderJobs(input);
+
+    expect(result).to.have.members(["a", "b", "c"]);
+  });
 });

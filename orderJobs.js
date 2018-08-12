@@ -13,6 +13,13 @@ exports.orderJobs = jobData => {
     const parentResultIndex = result.indexOf(parentJob);
     const childResultIndex = result.indexOf(childJob);
 
+    //If both already in result check they honour dependency
+    if (childResultIndex !== -1 && parentResultIndex !== -1) {
+      if (parentResultIndex > childResultIndex) {
+        throw new Error("Invalid input - Circular dependencies");
+      }
+    }
+
     //If no parent dependencies & job not present in result add to front
     if (!parentJob && childResultIndex === -1) result.unshift(childJob);
     //If neither in result add both to end in dependency order

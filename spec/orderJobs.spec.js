@@ -7,4 +7,10 @@ describe("orderJobs", () => {
     const result = orderJobs(input);
     expect(result).to.eql([]);
   });
+
+  it("An input of one job with no dependency will return an array with the job value", () => {
+    const input = '{"a" : ""}';
+    const result = orderJobs(input);
+    expect(result).to.eql(["a"]);
+  });
 });

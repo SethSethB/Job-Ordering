@@ -17,9 +17,8 @@ exports.orderJobs = jobData => {
         throw new Error("Invalid input - Circular dependencies");
       }
     }
-
     //If no parent dependencies & job not present in result add to front
-    if (!parentJob && childResultIndex === -1) result.unshift(childJob);
+    else if (!parentJob && childResultIndex === -1) result.unshift(childJob);
     //If neither in result add both to end in dependency order
     else if (parentResultIndex === -1 && childResultIndex === -1)
       result.push(parentJob, childJob);

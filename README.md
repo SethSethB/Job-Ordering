@@ -29,7 +29,7 @@ cd Job-Ordering
 You will need chai (v4.1.2) and mocha (v5.2.0) installed as dev dependencies for testing, run the following command to install:
 
 ```
-npm i
+npm install
 ```
 
 ## Testing

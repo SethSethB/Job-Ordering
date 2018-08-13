@@ -1,6 +1,9 @@
 exports.orderJobs = jobData => {
-  const jobs = JSON.parse(jobData);
   const result = [];
+
+  if (!jobData) return result;
+
+  const jobs = JSON.parse(jobData);
 
   for (let childJob in jobs) {
     const parentJob = jobs[childJob];
